@@ -1,0 +1,33 @@
+{
+  "name": "koa-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "koa.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mads Jacobsen",
+  "license": "ISC",
+  "dependencies": {
+    "gulp-react": "^2.0.0",
+    "jquery": "^2.1.1",
+    "koa": "^0.13.0",
+    "koa-handlebars": "^0.3.1",
+    "koa-request": "^1.0.0",
+    "koa-router": "^3.6.0",
+    "koa-static": "^1.4.7",
+    "node-jsx": "^0.12.0",
+    "react": "^0.12.0"
+  },
+  "devDependencies": {
+    "browserify": "^6.2.0",
+    "gulp": "^3.8.10",
+    "gulp-develop-server": "^0.2.4",
+    "gulp-livereload": "^2.1.1",
+    "gulp-rename": "^1.2.0",
+    "gulp-util": "^3.0.1",
+    "reactify": "^0.15.2",
+    "vinyl-source-stream": "^1.0.0",
+    "watchify": "^2.1.1"
+  }
+}

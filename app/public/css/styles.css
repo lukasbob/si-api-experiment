@@ -1,0 +1,31 @@
+body, table {
+	font: 14px/1.4 "helvetica neue";
+}
+
+pre {
+	font: 12px "source code pro", consolas, menlo, monotype;
+}
+
+main {
+	margin: 10px 40px;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+td, th {
+	padding: 8px;
+}
+
+th {
+	background: #efefef;
+}
+
+tr {
+	border-bottom: 1px solid #eaeaea;
+}
+
+.right {
+	text-align: right;
+}
