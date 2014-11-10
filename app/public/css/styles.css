@@ -1,5 +1,6 @@
-body, table {
-	font: 14px/1.4 "helvetica neue";
+body {
+	font: 14px/1.4 calibri, "helvetica neue";
+	background: #ffe;
 }
 
 pre {
@@ -11,7 +12,11 @@ main {
 }
 
 table {
+	background: #fff;
+	box-shadow: rgba(0,0,0,0.1) 0px 2px 0px;
 	border-collapse: collapse;
+	width: 100%;
+	table-layout: fixed;
 }
 
 td, th {
@@ -23,9 +28,23 @@ th {
 }
 
 tr {
-	border-bottom: 1px solid #eaeaea;
+	border: 1px solid #eaeaea;
+}
+
+ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+li {
+	margin: 8px 0;
 }
 
 .right {
 	text-align: right;
+}
+
+.comp-prop-key {
+	width: 200px;
 }

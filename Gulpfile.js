@@ -12,6 +12,8 @@ var livereload = require('gulp-livereload');
 var browserify = require('browserify');
 var watchify = require('watchify');
 var reactify = require('reactify');
+var uglify = require('gulp-uglify');
+var streamify = require('gulp-streamify');
 var react = require('gulp-react');
 var rename = require('gulp-rename');
 var source = require("vinyl-source-stream");
@@ -64,6 +66,9 @@ var scripts = function(watch) {
 			})
 			.pipe(source("main.jsx"))
 			.pipe(rename("main.js"))
+			.pipe(gulp.dest("./app/public/dist"))
+			.pipe(streamify(uglify()))
+			.pipe(rename('main.min.js'))
 			.pipe(gulp.dest("./app/public/dist"))
 			.pipe(livereload());
 	};
