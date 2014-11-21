@@ -7,6 +7,7 @@
 
 const request = require('koa-request');
 const config = require('./../config');
+const utils = require('./utils');
 
 var makeApiRequest = function *(path, qs) {
 	var apiUrl = config.root + path + '?' + qs;
@@ -28,11 +29,29 @@ module.exports = function *(next) {
 	var qs = this.querystring;
 
 	var response = yield makeApiRequest(path, qs);
+	var raw = JSON.parse(response.body);
 
 	this.siapi = {
 		path: path,
-		data: JSON.parse(response.body)
+		data: raw,
+		links: searchForLinks(raw)
 	};
 
 	yield next;
 };
+
+var searchForLinks = function(obj) {
+	var links = [];
+	for (var k in obj) {
+		if (k === '_links') {
+			links.push(obj[k]);
+		}
+
+		if (utils.isObj(obj[k])) {
+			searchForLinks(obj[k]);
+		}
+	}
+
+	return links;
+};
+

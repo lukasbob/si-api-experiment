@@ -9,7 +9,7 @@ var DataList = React.createClass({
 	},
 
 	getInitialState: function() {
-		return {data: this.props.data };
+		return { data: this.props.data };
 	},
 
 	componentDidMount: function(){
@@ -28,6 +28,7 @@ var DataList = React.createClass({
 		return (
 			<div className="comp-item-box">
 				<h1>{this.state.data.path}</h1>
+				<Paging links={this.state.data.data._links}/>
 				{list}
 				<pre>
 					{JSON.stringify(this.state.data, null, "  ")}
@@ -77,6 +78,23 @@ var Item = React.createClass({
 					{propNodes}
 				</table>
 			</li>
+		);
+	}
+});
+
+var Paging = React.createClass({
+
+	currentPage: function(){
+		return this.props.pagesize
+	},
+
+	render: function() {
+		if (!this.props.links) {
+			return "";
+		}
+
+		return (
+			<a>Page {this.props.links.next}</a>
 		);
 	}
 });

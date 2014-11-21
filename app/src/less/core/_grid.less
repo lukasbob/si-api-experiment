@@ -1,0 +1,22 @@
+.grid(@n, @i: 1) when (@i =< @n) {
+	.g-@{i}-@{n} { width: (@i * 100% / @n); }
+	.grid(@n, (@i + 1));
+}
+
+.pull(@n, @i: 1) when (@i =< @n) {
+	.p-@{i}-@{n} { margin-left: (0 - (@i * 100% / @n)); }
+	.pull(@n, (@i + 1));
+}
+
+.shove(@n, @i: 1) when (@i =< @n) {
+	.s-@{i}-@{n} { margin-left: (@i * 100% / @n); }
+	.shove(@n, (@i + 1));
+}
+
+[class*='g-'] {
+	float: left;
+}
+
+.grid(12);
+.pull(12);
+.shove(12);
