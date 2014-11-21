@@ -18,6 +18,9 @@ var react = require('gulp-react');
 var rename = require('gulp-rename');
 var source = require("vinyl-source-stream");
 
+// Styling
+var less = require("gulp-less");
+
 var production = process.env.NODE_ENV === 'production';
 
 var bases = {
@@ -28,6 +31,7 @@ var paths = {
 	scripts: ['./app/lib/*.js', './app/main.js'],
 	react: ['./app/src/js/**/*.jsx'],
 	styles: ['./app/public/**/*.css'],
+	less: ['./app/src/less/**/*.less'],
 	templates: ['./app/views/*.hbs', './app/layouts/*.hbs']
 };
 
@@ -82,10 +86,17 @@ var scripts = function(watch) {
 	return rebundle();
 };
 
+gulp.task('less', function() {
+	gulp.src('./app/src/less/main.less')
+		.pipe(less())
+		.pipe(gulp.dest('./app/public/dist'));
+});
+
 gulp.task('watch', function() {
 	var s = livereload();
 
 	gulp.watch(paths.scripts, ['serve']);
+	gulp.watch(paths.less, ['less']);
 	gulp.watch(paths.styles, s.changed);
 	gulp.watch(paths.templates, s.changed);
 
